@@ -91,7 +91,7 @@ jobs:
             'git config --global --add safe.directory /repo && gitleaks git /repo --redact --no-banner --exit-code 1 --report-format sarif --report-path /repo/gitleaks.sarif'
       - name: Upload SARIF
         if: always() && hashFiles('gitleaks.sarif') != ''
-        uses: github/codeql-action/upload-sarif@33d7b85da1a04171e211befe2c739303b9a4c066 # v4.39.3
+        uses: github/codeql-action/upload-sarif@1bd86f2fdb4b86187fa4059f16f31a3202acc9ea # v4.39.4
         with:
           sarif_file: gitleaks.sarif
           category: gitleaks
@@ -117,7 +117,7 @@ jobs:
               --sarif --output semgrep.sarif
       - name: Upload SARIF
         if: always() && hashFiles('semgrep.sarif') != ''
-        uses: github/codeql-action/upload-sarif@33d7b85da1a04171e211befe2c739303b9a4c066 # v4.39.3
+        uses: github/codeql-action/upload-sarif@1bd86f2fdb4b86187fa4059f16f31a3202acc9ea # v4.39.4
         with:
           sarif_file: semgrep.sarif
           category: semgrep
@@ -155,7 +155,7 @@ jobs:
             fs --scanners vuln,misconfig --offline-scan --format sarif --output /src/trivy-fs.sarif /src
       - name: Upload SARIF
         if: always() && hashFiles('trivy-fs.sarif') != ''
-        uses: github/codeql-action/upload-sarif@33d7b85da1a04171e211befe2c739303b9a4c066 # v4.39.3
+        uses: github/codeql-action/upload-sarif@1bd86f2fdb4b86187fa4059f16f31a3202acc9ea # v4.39.4
         with:
           sarif_file: trivy-fs.sarif
           category: trivy-fs
@@ -193,7 +193,7 @@ jobs:
             image --scanners vuln --format sarif --output /out/trivy-image.sarif loginguard:local
       - name: Upload SARIF
         if: always() && hashFiles('trivy-image.sarif') != ''
-        uses: github/codeql-action/upload-sarif@33d7b85da1a04171e211befe2c739303b9a4c066 # v4.39.3
+        uses: github/codeql-action/upload-sarif@1bd86f2fdb4b86187fa4059f16f31a3202acc9ea # v4.39.4
         with:
           sarif_file: trivy-image.sarif
           category: trivy-image
